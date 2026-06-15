@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>David Xu</title>
+<style>
+  :root{
+    --ink:#141014;        /* near-black text */
+    --muted:#4a3f45;      /* dark, not gray */
+    --accent:#a81e52;     /* deep rose link */
+    --accent-2:#7a1338;   /* darker rose */
+    --rose-soft:#f0c9d8;  /* soft pink fill */
+    --rule:#e3c4d0;
+    --bg:#faf0f3;
+    --card:#fff7fa;
+    --maxw:900px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
+
+  /* nav */
+  nav{
+    position:sticky;top:0;z-index:10;
+    background:rgba(250,240,243,.85);
+    backdrop-filter:saturate(180%) blur(8px);
+    border-bottom:1px solid var(--rule);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:52px;}
+  nav .name{font-weight:700;font-size:16px;color:var(--accent-2);}
+  nav .links a{margin-left:18px;font-size:15px;color:var(--muted);}
+  nav .links a:hover{color:var(--accent);text-decoration:none;}
+
+  /* header / intro */
+  header{padding:54px 0 8px;}
+  .intro{
+    display:grid;
+    grid-template-columns:240px 1fr;
+    gap:40px;
+    align-items:start;
+  }
+  .col-left{text-align:center;}
+  .photo{
+    width:240px;height:240px;border-radius:14px;
+    background:radial-gradient(circle at 30% 30%, #fbe4ec, #f0c1d4);
+    border:4px solid #fff;
+    box-shadow:0 0 0 2px var(--rule), 0 14px 30px -16px rgba(122,19,56,.5);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--accent-2);font-size:13px;text-align:center;
+    overflow:hidden;
+  }
+  .photo img{width:100%;height:100%;object-fit:cover;display:block;}
+  header h1{font-size:26px;margin:16px 0 6px;font-weight:700;letter-spacing:-.01em;color:var(--ink);}
+  header h1 .wave{color:var(--accent);}
+  .tag{color:var(--muted);font-size:15px;margin:0 0 12px;}
+  .contact{font-size:14px;color:var(--muted);margin:10px 0 4px;line-height:1.9;}
+  .contact a{margin:0 2px;}
+  .dot{color:var(--accent);margin:0 5px;}
+  .bio{margin:0;color:var(--ink);}
+  .bio + .bio{margin-top:16px;}
+
+  /* section */
+  section{padding:34px 0 6px;border-top:1px solid var(--rule);margin-top:30px;}
+  section h2{
+    font-size:13px;text-transform:uppercase;letter-spacing:.12em;
+    color:var(--accent-2);font-weight:700;margin:0 0 20px;
+    display:flex;align-items:center;gap:10px;
+  }
+  section h2::before{
+    content:"";width:22px;height:3px;border-radius:3px;
+    background:var(--accent);display:inline-block;
+  }
+
+  /* project entries */
+  .entry{
+    margin:0 0 18px;padding:18px 20px;
+    background:var(--card);border:1px solid var(--rule);
+    border-radius:12px;transition:box-shadow .15s ease, transform .15s ease;
+  }
+  .entry:hover{box-shadow:0 10px 26px -18px rgba(157,44,84,.45);transform:translateY(-1px);}
+  .entry .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;}
+  .entry .title{font-weight:700;font-size:18px;color:var(--accent-2);}
+  a.title{text-decoration:none;}
+  a.title:hover{color:var(--accent);text-decoration:underline;}
+  a.title::after{content:"\2197";font-size:13px;margin-left:5px;color:var(--accent);opacity:.7;}
+  .entry .when{color:var(--muted);font-size:14px;white-space:nowrap;}
+  .entry p{margin:6px 0 0;color:#43383e;}
+  .entry .meta{margin-top:7px;}
+  .badge{
+    display:inline-block;font-size:12px;line-height:1;
+    padding:5px 10px;margin:6px 6px 0 0;border-radius:999px;
+    background:var(--rose-soft);color:var(--accent-2);border:1px solid #eac3d3;
+  }
+  .venue{color:var(--accent);font-weight:600;}
+
+  /* lists for experience */
+  .row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:0 0 4px;}
+  .row .org{font-weight:600;}
+  .row .where{color:var(--muted);font-size:14px;}
+  .role{color:var(--muted);font-size:15px;margin:0 0 4px;}
+  ul.clean{margin:6px 0 22px;padding-left:18px;}
+  ul.clean li{margin:3px 0;color:#333;}
+
+  footer{padding:40px 0 60px;color:var(--muted);font-size:14px;border-top:1px solid var(--rule);margin-top:30px;}
+
+  @media (max-width:640px){
+    body{font-size:16px;}
+    nav .links a{margin-left:12px;}
+    .intro{grid-template-columns:1fr;gap:22px;justify-items:center;text-align:center;}
+    .photo{width:200px;height:200px;}
+    .col-right{text-align:left;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <span class="name">David Xu</span>
+    <span class="links">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+    </span>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header id="about">
+    <div class="intro">
+      <div class="col-left">
+        <div class="photo">
+          <!-- Drop your photo in assets/ and set the src below -->
+          <img src="assets/cliff.jpg" alt="David Xu"
+               onerror="this.style.display='none';this.parentNode.textContent='Your photo here';">
+        </div>
+        <h1>Hi, I'm David! <span class="wave">&#128075;</span></h1>
+        <p class="tag">EECS @ UC Berkeley</p>
+        <p class="contact">
+          <a href="mailto:rav4@berkeley.edu">rav4@berkeley.edu</a><br>
+          <a href="assets/cv.pdf">CV</a>
+          <span class="dot">&middot;</span>
+          <a href="https://github.com/BistroP" target="_blank" rel="noopener">GitHub</a>
+        </p>
+      </div>
+
+      <div class="col-right">
+        <p class="bio">
+          I'm an undergraduate studying Electrical Engineering and Computer Science at
+          UC Berkeley (B.S., expected May 2027), interested in machine learning and
+          natural language processing &mdash; especially representation learning,
+          language models, and applying them to problems in the life sciences. Below are some of the projects and research I've
+          worked on. Please reach out if you'd like to chat! 
+        </p>
+        <p class="bio">
+          Beyond that, I've lived in China, Brazil, went to middle/high school in New Zealand, and am now studying here in the States. I read, cook, and am a diehard Sixers fan (trust the process!). 
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <section id="research">
+    <h2>Projects &amp; Research</h2>
+
+    <div class="entry">
+      <div class="top">
+        <a class="title" href="https://iclr.cc/virtual/2026/10021640" target="_blank" rel="noopener">Multimodal Contrastive Learning for Cancer Cell Identification</a>
+        <span class="when">Spring 2026</span>
+      </div>
+      <p>
+        Developed a multimodal contrastive learning framework as an alternative
+        approach to differential expression analysis, integrating transcriptomic
+        features with representation learning to identify early malignant transition.
+      </p>
+      <div class="meta">
+        <span class="venue">Accepted &mdash; NeurIPS 2026 Workshop on Multimodal Foundation Models for Life Sciences</span>
+      </div>
+      <div class="meta">
+        <span class="badge">Contrastive Learning</span>
+        <span class="badge">Multimodal</span>
+        <span class="badge">Transcriptomics</span>
+        <span class="badge">PyTorch</span>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="top">
+        <a class="title" href="https://github.com/BistroP/Natural-Language-Inference-Analysis-for-FDA-Drug-Labels-" target="_blank" rel="noopener">Risk Communication Analysis of Drug Labels using Natural Language Inference</a>
+        <span class="when">Summer 2026</span>
+      </div>
+      <p>
+        Built a framework for longitudinal analysis of risk communication in drug
+        labels using natural language inference and zero-shot text classification,
+        presenting the pipeline and findings in a paper under submission to LREC 2026.
+      </p>
+      <div class="meta">
+        <span class="venue">Under submission &mdash; LREC 2026</span>
+      </div>
+      <div class="meta">
+        <span class="badge">NLP</span>
+        <span class="badge">Natural Language Inference</span>
+        <span class="badge">Zero-shot Classification</span>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="top">
+        <a class="title" href="https://garvcodes.github.io/Neural-Net-Neutrality/index.html" target="_blank" rel="noopener">Measuring Information Safety in LLMs</a>
+        <span class="when">Fall 2025</span>
+      </div>
+      <p>
+        Designed a benchmarking framework to measure political bias and influence in
+        large language models, with feature design drawn from computational social
+        science. Built backend infrastructure for LLM-Arena-style LLM-versus-LLM
+        evaluation using Supabase.
+      </p>
+      <div class="meta">
+        <span class="badge">LLM Evaluation</span>
+        <span class="badge">Benchmarking</span>
+        <span class="badge">Supabase</span>
+      </div>
+    </div>
+  </section>
+
+
+  <footer>
+    &copy; <span id="yr"></span> David Xu &middot;
+    <a href="mailto:rav4@berkeley.edu">rav4@berkeley.edu</a>
+  </footer>
+
+</div>
+
+<script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+</body>
+</html>
